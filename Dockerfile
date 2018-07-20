@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
       wget && \
     rm -rf /var/lib/apt/lists/*
 
-COPY *.py README.md requirements.txt /src
+COPY *.py README.md requirements.txt /src/
 COPY utils /src/utils
 
 WORKDIR /src
