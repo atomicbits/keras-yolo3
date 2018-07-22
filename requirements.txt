@@ -5,3 +5,4 @@ PyYAML==3.*
 scipy==1.1.*
 six==1.11.*
 opencv-python-headless==3.4.*
+tqdm==4.23.*
