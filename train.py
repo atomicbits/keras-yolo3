@@ -15,6 +15,7 @@ from utils.multi_gpu_model import multi_gpu_model
 import tensorflow as tf
 import keras
 from keras.models import load_model
+import datetime
 
 def create_training_instances(
     train_annot_folder,
