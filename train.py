@@ -64,13 +64,13 @@ def create_training_instances(
 
     return train_ints, valid_ints, sorted(labels), max_box_per_image
 
-def create_callbacks(saved_weights_name, tensorboard_logs, model_to_save):
+def create_callbacks(saved_weights_name, tensorboard_logs, model_to_save, patience):
     makedirs(tensorboard_logs)
 
     early_stop = EarlyStopping(
         monitor     = 'loss',
         min_delta   = 0.01,
-        patience    = 5,
+        patience    = patience,
         mode        = 'min',
         verbose     = 1
     )
@@ -249,7 +249,8 @@ def _main_(args):
     ###############################
     #   Kick off the training
     ###############################
-    callbacks = create_callbacks(config['train']['saved_weights_name'], config['train']['tensorboard_dir'], infer_model)
+    patience = config['train']['patience']
+    callbacks = create_callbacks(config['train']['saved_weights_name'], config['train']['tensorboard_dir'], infer_model, patience)
 
     train_model.fit_generator(
         generator        = train_generator,
